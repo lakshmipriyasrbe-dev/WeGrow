@@ -1,0 +1,256 @@
+CREATE TABLE `tc_staff` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_date_time` datetime DEFAULT NULL,
+  `updated_date_time` datetime DEFAULT NULL,
+  `staff_id` mediumtext DEFAULT NULL,
+  `staff_name` mediumtext DEFAULT NULL,
+  `staff_number` mediumtext DEFAULT NULL,
+  `role_id` int(11) DEFAULT NULL,
+  `course_id` mediumtext DEFAULT NULL,
+  `salary` decimal(10,2) DEFAULT NULL,
+  `username` mediumtext DEFAULT NULL,
+  `password` mediumtext DEFAULT NULL,
+  `address` mediumtext DEFAULT NULL,
+  `deleted` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+CREATE TABLE `tc_enrollment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_date_time` datetime DEFAULT NULL,
+  `updated_date_time` datetime DEFAULT NULL,
+  `enrollment_id` mediumtext DEFAULT NULL,
+  `student_id` mediumtext DEFAULT NULL,
+  `student_name` mediumtext DEFAULT NULL,
+  `father_spouse_name` mediumtext DEFAULT NULL,
+  `address` mediumtext DEFAULT NULL,
+  `mobile_number` mediumtext DEFAULT NULL,
+  `parent_contact_no` mediumtext DEFAULT NULL,
+  `course_id` mediumtext DEFAULT NULL,
+  `duration` mediumtext DEFAULT NULL,
+  `from_time` mediumtext DEFAULT NULL,
+  `to_time` mediumtext DEFAULT NULL,
+  `staff_id` mediumtext DEFAULT NULL,
+  `fees_type` mediumtext DEFAULT NULL,
+  `fees_amount` decimal(10,2) DEFAULT NULL,
+  `paid_amount` decimal(10,2) DEFAULT NULL,
+  `balance_amount` decimal(10,2) DEFAULT NULL,
+  `dob` date DEFAULT NULL,
+  `doj` date DEFAULT NULL,
+  `blood_group` mediumtext DEFAULT NULL,
+  `candidate_photo` mediumtext DEFAULT NULL,
+  `deleted` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+CREATE TABLE `tc_payment_mode` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_date_time` datetime DEFAULT NULL,
+  `updated_date_time` datetime DEFAULT NULL,
+  `payment_mode_id` mediumtext DEFAULT NULL,
+  `payment_mode_name` mediumtext DEFAULT NULL,
+  `deleted` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+CREATE TABLE `tc_bank` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_date_time` datetime DEFAULT NULL,
+  `updated_date_time` datetime DEFAULT NULL,
+  `bank_id` mediumtext DEFAULT NULL,
+  `bank_name` mediumtext DEFAULT NULL,
+  `account_name` mediumtext DEFAULT NULL,
+  `account_number` mediumtext DEFAULT NULL,
+  `ifsc_code` mediumtext DEFAULT NULL,
+  `payment_modes` mediumtext DEFAULT NULL,
+  `branch` mediumtext DEFAULT NULL,
+  `deleted` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+CREATE TABLE `tc_course_closure` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_date_time` datetime DEFAULT NULL,
+  `updated_date_time` datetime DEFAULT NULL,
+  `closure_id` mediumtext DEFAULT NULL,
+  `closure_date` date DEFAULT NULL,
+  `course_type` mediumtext DEFAULT NULL,
+  `student_id` mediumtext DEFAULT NULL,
+  `student_name` mediumtext DEFAULT NULL,
+  `certificate_got` int(11) DEFAULT NULL,
+  `course_closed` int(11) DEFAULT 0,
+  `placed` int(11) DEFAULT NULL,
+  `company_name` mediumtext DEFAULT NULL,
+  `company_address` mediumtext DEFAULT NULL,
+  `designation` mediumtext DEFAULT NULL,
+  `ctc` mediumtext DEFAULT NULL,
+  `deleted` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+CREATE TABLE `tc_attendance` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_date_time` datetime DEFAULT NULL,
+  `updated_date_time` datetime DEFAULT NULL,
+  `attendance_id` mediumtext DEFAULT NULL,
+  `attendance_date` date DEFAULT NULL,
+  `staff_id` mediumtext DEFAULT NULL,
+  `staff_name` mediumtext DEFAULT NULL,
+  `staff_number` mediumtext DEFAULT NULL,
+  `staff_role` mediumtext DEFAULT NULL,
+  `fn_present` mediumtext DEFAULT NULL,
+  `an_present` mediumtext DEFAULT NULL,
+  `present_code` mediumtext DEFAULT NULL,
+  `deleted` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci; 
+
+CREATE TABLE `tc_payroll` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_date_time` datetime DEFAULT NULL,
+  `updated_date_time` datetime DEFAULT NULL,
+  `payroll_id` mediumtext DEFAULT NULL,
+  `payroll_number` mediumtext DEFAULT NULL,
+  `staff_id` int(11) DEFAULT NULL,
+  `month` int(11) DEFAULT NULL,
+  `year` int(11) DEFAULT NULL,
+  `monthly_salary` decimal(10,2) DEFAULT NULL,
+  `per_day_salary` decimal(10,2) DEFAULT NULL,
+  `cl_days` int(11) DEFAULT 0,
+  `lop_days` int(11) DEFAULT 0,
+  `total_deduction` decimal(10,2) DEFAULT NULL,
+  `incentive_amount` decimal(10,2) DEFAULT NULL,
+  `total_references` int(11) DEFAULT 0,
+  `net_salary` decimal(10,2) DEFAULT NULL,
+  `payment_date` date DEFAULT NULL,
+  `deleted` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `tc_student_attendance` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_date_time` datetime DEFAULT NULL,
+  `updated_date_time` datetime DEFAULT NULL,
+  `attendance_number` mediumtext DEFAULT NULL,
+  `attendance_date` date DEFAULT NULL,
+  `staff_id` mediumtext DEFAULT NULL,
+  `student_id` mediumtext DEFAULT NULL,
+  `fn_present` mediumtext DEFAULT NULL,
+  `an_present` mediumtext DEFAULT NULL,
+  `present_code` mediumtext DEFAULT NULL,
+  `deleted` int(11) NOT NULL DEFAULT 0,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+-- Alter tc_company table to add new fields
+ALTER TABLE `tc_company` ADD COLUMN `gst` mediumtext DEFAULT NULL;
+ALTER TABLE `tc_company` ADD COLUMN `branch` mediumtext DEFAULT NULL;
+ALTER TABLE `tc_company` ADD COLUMN `logo_image` mediumtext DEFAULT NULL;
+ALTER TABLE `tc_company` ADD COLUMN `company_details` longtext DEFAULT NULL;
+
+
+/// 
+
+CREATE TABLE `tc_expense_entry` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `created_date_time` datetime DEFAULT NULL,
+ `updated_date_time` datetime DEFAULT NULL,
+ `expense_entry_id` mediumtext DEFAULT NULL,
+ `expense_category_id` mediumtext DEFAULT NULL,
+ `expense_entry_date` mediumtext DEFAULT NULL,
+ `payment_mode` mediumtext DEFAULT NULL,
+ `bank` mediumtext DEFAULT NULL,
+ `amount` mediumtext DEFAULT NULL,
+ `total_amount` mediumtext DEFAULT NULL,
+ `attachments` mediumtext DEFAULT NULL,
+ `deleted` int(11) NOT NULL DEFAULT 0,
+ PRIMARY KEY (`id`)
+)
+
+-- Add enrollment_id column to tc_payment table (for enrollment-receipt linking)
+ALTER TABLE `tc_payment` ADD COLUMN `enrollment_id` mediumtext DEFAULT NULL;
+
+-- Create course_enquiry table for tracking student course enquiries
+CREATE TABLE `tc_course_enquiry` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `enquiry_id` varchar(255) DEFAULT NULL,
+  `company_id` varchar(255) DEFAULT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `mobile_number` varchar(255) DEFAULT NULL,
+  `degree_completed` varchar(255) DEFAULT NULL,
+  `address` text DEFAULT NULL,
+  `course_id` varchar(255) DEFAULT NULL,
+  `converted_type` varchar(255) DEFAULT 'none',
+  `converted_id` varchar(255) DEFAULT NULL,
+  `deleted` int(11) NOT NULL DEFAULT 0,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Create tc_event table for Event Management
+CREATE TABLE `tc_event` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `event_id` varchar(255) DEFAULT NULL,
+  `company_id` varchar(255) DEFAULT NULL,
+  `user_id` varchar(255) DEFAULT NULL,
+  `role_id` varchar(255) DEFAULT NULL,
+  `event_date` date DEFAULT NULL,
+  `event_name` varchar(255) DEFAULT NULL,
+  `event_description` text DEFAULT NULL,
+  `images` text DEFAULT NULL,
+  `deleted` int(11) NOT NULL DEFAULT 0,
+  `created_date_time` datetime DEFAULT NULL,
+  `updated_date_time` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Add enrollment_number column to tc_enrollment and tc_enrollment_internship tables
+ALTER TABLE `tc_enrollment` ADD COLUMN `enrollment_number` varchar(255) DEFAULT NULL AFTER `enrollment_id`;
+ALTER TABLE `tc_enrollment_internship` ADD COLUMN `enrollment_number` varchar(255) DEFAULT NULL AFTER `enrollment_internship_id`;
+
+-- Add event_number column to tc_event table
+ALTER TABLE `tc_event` ADD COLUMN `event_number` varchar(255) DEFAULT NULL AFTER `event_id`;
+
+-- GST 18% Exclusive Calculation & Storage
+-- Added paid_amount, cgst_amount, and sgst_amount columns to tc_payment table.
+ALTER TABLE `tc_payment` 
+ADD COLUMN `paid_amount` varchar(255) DEFAULT '0.00' AFTER `amount`,
+ADD COLUMN `cgst_amount` varchar(255) DEFAULT '0.00' AFTER `paid_amount`,
+ADD COLUMN `sgst_amount` varchar(255) DEFAULT '0.00' AFTER `cgst_amount`;
+
+-- Populate legacy records with total_amount and zero GST
+UPDATE `tc_payment` SET `paid_amount` = `total_amount`, `cgst_amount` = '0.00', `sgst_amount` = '0.00';
+
+ALTER TABLE `tc_course`
+ADD COLUMN `fees_amount` varchar(255) DEFAULT '0.00' AFTER `course_fee`,
+ADD COLUMN `gst_amount` varchar(255) DEFAULT '0.00' AFTER `fees_amount`;
+
+-- Populate legacy course records with existing course_fee and zero GST
+UPDATE `tc_course` SET `fees_amount` = `course_fee`, `gst_amount` = '0.00';
+
+ALTER TABLE `tc_course_enquiry` ADD `enquiry_date` DATE NULL DEFAULT NULL AFTER `updated_date_time`; 
+
+UPDATE tc_course_enquiry SET enquiry_date = date(created_date_time)
+
+
+ALTER TABLE tc_expense_entry
+ADD INDEX idx_company_deleted_date
+(company_id, deleted, expense_entry_date);
+
+ALTER TABLE tc_enrollment_internship
+ADD INDEX idx_company_deleted
+(company_id, deleted);
+
+ALTER TABLE tc_enrollment
+ADD INDEX idx_company_deleted
+(company_id, deleted);
+
+ALTER TABLE tc_payment
+ADD INDEX idx_company_deleted_date
+(company_id, deleted, payment_date);
+
+ALTER TABLE `tc_expense_entry` CHANGE `company_id` `company_id` VARCHAR(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL, CHANGE `expense_entry_date` `expense_entry_date` DATE NULL DEFAULT NULL;
+
+ALTER TABLE tc_role_permissions
+ADD INDEX idx_role_company_page
+(role_id(100), company_id(100), permission_page(100));

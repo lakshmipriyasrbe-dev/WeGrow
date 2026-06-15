@@ -1,0 +1,60 @@
+<?php require_once 'common_file.php'; 
+if ($user_role != 'admin' && !$is_management) { header("Location: dashboard.php"); exit(); }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management - <?php echo get_company_name(); ?></title>
+    <link rel="stylesheet" href="assets/outfit.css">
+    <script src="js/jquery.min.js"></script>
+    <?php include 'includes/head_assets.php'; ?>
+</head>
+<body>
+    <?php include 'sidebar.php'; ?>
+
+    <div class="main-content update_content">
+        <div class="header">
+            <h2>User Management</h2>
+        </div>
+
+        <div class="module-section">
+            <div class="section-title">
+                Active Users
+                <!-- <button class="btn-add" onclick="ShowPage('user', '')">Add New User</button> -->
+            </div>
+            <div class="list-controls">
+                <div class="entries-control">
+                    Show 
+                    <select id="user_limit" onchange="loadData('user', 1, this.value, $('#user_search').val())">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    entries
+                </div>
+                <div class="search-control">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="user_search" placeholder="Search users..." onkeyup="loadData('user', 1, $('#user_limit').val(), this.value)">
+                </div>
+            </div>
+
+            <div id="user_list">
+                <p style="text-align:center; padding: 2rem; color: var(--text-muted);">Loading Users...</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="main-content new_content" style="display: none;"></div>
+
+    <script>
+        $(document).ready(function() {
+            loadData('user');
+        });
+    </script>
+    <script src="main/js/script.js"></script>
+    <script src="main/js/keyboard_control.js"></script>
+</body>
+</html>
