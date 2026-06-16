@@ -1,5 +1,5 @@
 <?php
-    require_once 'config.php';
+    // require_once 'config.php';
     class Basic_Functions extends Database {
 
         public $con;

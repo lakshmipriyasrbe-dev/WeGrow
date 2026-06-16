@@ -1,4 +1,5 @@
 <?php
+    require_once 'config.php';
     require_once 'main/functions.php';     
     require_once 'main/validation.php';
     require_once 'main/label.php';
